@@ -1,0 +1,5 @@
+{
+  "name": "EmojiCut AI",
+  "description": "Smart sticker sheet splitter. Upload a composite image, and it automatically crops, removes backgrounds, and names your stickers using Gemini Vision.",
+  "requestFramePermissions": []
+}
