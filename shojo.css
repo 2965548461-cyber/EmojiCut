@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Mali:wght@400;500;600&display=swap');
+
+:root {
+    --shojo-pink: #FFC0CB;
+    --shojo-pink-dark: #FF99A4;
+    --shojo-white: #FFF5F7;
+    --shojo-lavender: #E6E6FA;
+    --shojo-blue: #E0F7FA;
+    --shojo-text: #6B4C4C;
+    --shojo-border: #FFB7B2;
+}
+
+body {
+    font-family: 'Mali', 'Fredoka', cursive, sans-serif;
+    color: var(--shojo-text);
+    background-color: var(--shojo-white);
+    /* Cute Polka Dot Pattern */
+    background-image: radial-gradient(var(--shojo-pink-dark) 2px, transparent 2px);
+    background-size: 30px 30px;
+}
+
+.shojo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* The Cute Machine Panel */
+.cute-machine {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    border: 8px solid var(--shojo-pink);
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow:
+        0 10px 0 var(--shojo-pink-dark),
+        0 20px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cute-machine::before {
+    /* Decoration: Cat Ears or Bow? Let's do a simple Bow */
+    content: '';
+    position: absolute;
+    top: -30px;
+    width: 60px;
+    height: 30px;
+    background: var(--shojo-pink-dark);
+    border-radius: 20px 20px 0 0;
+    z-index: -1;
+}
+
+.cute-machine.processing {
+    animation: wobble 0.5s infinite ease-in-out;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-2deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+}
+
+/* Screen / Input Area */
+.machine-screen {
+    width: 100%;
+    height: 200px;
+    background: var(--shojo-blue);
+    border: 4px dashed #B2EBF2;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.machine-screen:hover {
+    background: #B2EBF2;
+    border-color: #80DEEA;
+    transform: scale(1.02);
+}
+
+.screen-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0097A7;
+}
+
+/* Output Slot */
+.output-slot-2d {
+    width: 80%;
+    height: 12px;
+    background: #444;
+    border-radius: 6px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.output-slot-2d::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #222;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Decorative Decorations */
+.deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 25;
+}
+
+.deco-star {
+    color: #FFD700;
+    font-size: 24px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.deco-heart {
+    color: #FF69B4;
+    font-size: 20px;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+}
+
+/* Buttons */
+.cute-btn {
+    background: var(--shojo-lavender);
+    border: 3px solid #D1C4E9;
+    color: #7E57C2;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 0 #D1C4E9;
+}
+
+.cute-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #D1C4E9;
+}
+
+.cute-btn:hover {
+    background: #D1C4E9;
+    color: white;
+}
+
+/* Sticker Stack Container */
+.sticker-desk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* Behind machine mostly, but stack is z-indexed higher */
+    pointer-events: none;
+}
