@@ -14,3 +14,15 @@ export interface ProcessingStatus {
   progress: number;
   message: string;
 }
+
+// App mode: generate stickers first, then cut
+export type AppMode = 'generate' | 'cut';
+
+export interface GenerationState {
+  referenceImage: string | null;
+  selectedStyleId: string;
+  customStyle: string;
+  generatedImage: string | null;
+  isGenerating: boolean;
+  error: string | null;
+}
